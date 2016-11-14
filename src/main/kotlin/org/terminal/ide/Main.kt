@@ -5,7 +5,6 @@ import com.googlecode.lanterna.input.KeyType
 import com.googlecode.lanterna.screen.TerminalScreen
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory
 import java.io.File
-import java.lang.Integer.max
 import java.lang.Integer.min
 
 /**
@@ -84,6 +83,7 @@ fun main(argv: Array<String>) {
                             (if (input.isShiftDown) input.character.toUpperCase() else input.character) +
                             lines[currentRow].substring(screen.cursorPosition.column - space - 1)
                     drawLine(currentRow)
+                    screen.cursorPosition = screen.cursorPosition.withRelativeColumn(1)
                 }
             }
             screen.refresh()
